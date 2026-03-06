@@ -3,12 +3,19 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './app/queryClient.ts';
-// import { queryClient } from 'app/queryClient';
+import { store } from './app/store.ts';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import './shared/styles/global.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </Provider>
+    </BrowserRouter>
   </StrictMode>,
 );

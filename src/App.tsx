@@ -1,13 +1,7 @@
-import { useState } from 'react';
+import AppRouter from './core/routing/AppRouter';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <div>Exam Portal</div>
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
