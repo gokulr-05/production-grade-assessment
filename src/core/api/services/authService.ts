@@ -1,10 +1,16 @@
-import { apiClient } from '../apiClient';
-
 export const loginAPI = async (email: string, password: string) => {
-  const response = await apiClient.post('/auth/login', {
-    email,
-    password,
-  });
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  return response.data;
+  if (email === 'admin@test.com' && password === '123456') {
+    return {
+      user: {
+        id: '1',
+        email,
+        role: 'admin',
+      },
+      accessToken: 'mock-jwt-token',
+    };
+  }
+
+  throw new Error('Invalid credentials');
 };
