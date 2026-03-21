@@ -21,6 +21,7 @@ function LoginPage() {
       { email, password },
       {
         onSuccess: (data) => {
+          localStorage.setItem('auth', JSON.stringify(data));
           dispatch(setAuth(data));
           navigate('/dashboard');
         },
